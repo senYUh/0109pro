@@ -22,6 +22,21 @@ int isprime(int i)
 	}
 	return ret;
 }
+void CalculateWeekDay(int y, int m,int d)
+{
+	if(m==1||m==2) m+=12,y--;
+	int iWeek = (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;
+	switch(iWeek)
+	{
+		case 0: cout<<"星期一\n"; break;
+     	case 1: cout<<"星期二\n"; break;
+     	case 2: cout<<"星期三\n"; break;
+     	case 3: cout<<"星期四\n"; break;
+     	case 4: cout<<"星期五\n"; break;
+     	case 5: cout<<"星期六\n"; break;
+     	case 6: cout<<"星期日\n"; break;
+	}
+}
 int main()
 {
     while(1)
@@ -31,11 +46,12 @@ int main()
     cout<<"************        输入1， 玩回文数，                  ***********************"<<endl;
     cout<<"************        输入2，玩日期判定                   ***********************"<<endl;
     cout<<"************        输入3，玩素数判定                   ***********************"<<endl;
-    cout<<"************        如果什么都不想玩 ,输入n             ***********************"<<endl;
+    cout<<"************        输入4，玩星期查询                   ***********************"<<endl;
+    cout<<"************        输入0,什么都不玩。                  ***********************"<<endl;
     cout<<"*******************************************************************************"<<endl;
         int shu;
         cin>>shu;
-        if('n'==shu)
+        if(0==shu)
         {
             break;
         }
@@ -219,6 +235,30 @@ int main()
                      }
                      break;
                 }
+                case 4:
+                    {
+                        while(1)
+                        {
+                            cout<<"你想玩星期查询吗？如果想，请输入y，否则输入n。"<<endl;
+                            string a;
+                            cin>>a;
+                            if("n"==a)
+                            {
+                                break;
+                            }
+                            else if("y"==a)
+                            {
+                                int a,b,c;
+                                cout<<"请输入对应日期\n";
+                                cin>>a>>b>>c;
+                                CalculateWeekDay(a,b,c);
+                            }
+                            else
+                            {
+                                cout<<"请输入正确字符"<<endl;
+                            }
+                        }
+                    }
             }
         }
     }
